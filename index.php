@@ -10,14 +10,7 @@
 	$response = new Twiml();
 
 	// Use the <Gather> verb to collect user input
-	$gather = $response->gather(array('numDigits' => 1));
-	// use the <Say> verb to request input from the user
-	$gather->say('Lets play the FizzBuzz game!');
-
-	$response->redirect('/voice');
 
 	header('Content-Type: text/xml');
-
 	echo $response;
-
 ?>
