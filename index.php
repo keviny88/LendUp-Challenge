@@ -5,7 +5,6 @@
 	require_once __DIR__.'\vendor\autoload.php';
 	use Twilio\Twiml;
 
-	echo "Hello"
 
 	//Use Twilio PHP SDK to build an XML response
 	$response = new Twiml();
@@ -19,6 +18,6 @@
 
 	header('Content-Type: text/xml');
 
-	echo $response
+	echo $response;
 
 ?>
