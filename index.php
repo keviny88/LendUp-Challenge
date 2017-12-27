@@ -14,7 +14,7 @@
 
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input
-	    $gather = $response->gather(array('numDigits' => 3));
+	    $gather = $response->gather(array('numDigits' => 5, 'timeout' => 5));
 	    // use the <Say> verb to request input from the user
 	    $gather->say('Lets play fizzbuzz. Enter a number!');
 
