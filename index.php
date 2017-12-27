@@ -2,7 +2,6 @@
 
 	
 	//Create a route that will handle Twilio webhook requests
-	echo "Hello, welcome to the LendUp challenge";
 	require_once __DIR__.'\vendor\autoload.php';
 	use Twilio\Twiml;
 
