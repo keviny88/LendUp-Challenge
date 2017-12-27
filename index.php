@@ -9,12 +9,12 @@
 
 	// If the user entered digits, process their request
 	if (array_key_exists('Digits', $_POST)) {
-		
+
 	    $response->say($_POST['Digits']);
 
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input
-	    $gather = $response->gather(array('numDigits' => 1));
+	    $gather = $response->gather(array('numDigits' => 3));
 	    // use the <Say> verb to request input from the user
 	    $gather->say('Lets play fizzbuzz. Enter a number!');
 
