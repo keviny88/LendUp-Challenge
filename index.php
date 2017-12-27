@@ -2,7 +2,7 @@
 
 	
 	//Create a route that will handle Twilio webhook requests
-	require_once __DIR__.'\vendor\autoload.php';
+	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
 
 	$response = new Twiml();
