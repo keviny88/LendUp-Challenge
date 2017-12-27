@@ -7,7 +7,7 @@
 
 
 	//Use Twilio PHP SDK to build an XML response
-	$response = new Twiml();
+	//$response = new Twiml();
 
 	// Use the <Gather> verb to collect user input
 
