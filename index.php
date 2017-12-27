@@ -11,6 +11,5 @@
 
 	// Use the <Gather> verb to collect user input
 
-	header('Content-Type: text/xml');
-	echo $response;
+
 ?>
