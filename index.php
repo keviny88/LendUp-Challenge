@@ -6,6 +6,7 @@
 	require_once __DIR__.'\vendor\autoload.php';
 	use Twilio\Twiml;
 
+	$response = new Twiml();
 
 	// If the user entered digits, process their request
 	if (array_key_exists('Digits', $_POST)) {
@@ -33,5 +34,5 @@
 	header('Content-Type: text/xml');
 	echo $response;
 
-	
+
 ?>
