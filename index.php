@@ -1,6 +1,5 @@
 <?php
 
-	
 	//Create a route that will handle Twilio webhook requests
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
@@ -32,6 +31,7 @@
 	if (array_key_exists('Digits', $_POST)) {
 
 	    $response->say(fizzBuzz($_POST['Digits']));
+
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input
 	    // A user has 3 seconds to enter a number, up to 5 digits
@@ -46,6 +46,4 @@
 	// Render the response as XML in reply to the webhook request
 	header('Content-Type: text/xml');
 	echo $response;
-
-
 ?>
