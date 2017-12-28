@@ -15,14 +15,12 @@
 
 <body>
 
-	
-
 	<div class="container" style="padding-top: 150px">
 		<h1 class="display-1" style="text-align: center;">FizzBuzz</h1>
 		<form>
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Phone Number</label>
-		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter number">
+		    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter number">
 		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Submit</button>

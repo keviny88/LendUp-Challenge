@@ -38,7 +38,7 @@
 	    // A user has 3 seconds to enter a number, up to 5 digits
 	    $gather = $response->gather(array('numDigits' => 3));
 	    // use the <Say> verb to request input from the user
-	    $gather->say('Lets play fizzbuzz. Enter a number!');
+	    $gather->say('Fuck you Julius! Go suck a dick.');
 
 	    // If the user doesn't enter input, loop
 	    $response->redirect('/voice');
