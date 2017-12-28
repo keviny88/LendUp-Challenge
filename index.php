@@ -7,11 +7,31 @@
 
 	$response = new Twiml();
 
+	echo "BEGINNING!";
+
+	function fizzBuzz($digit)
+	{
+		$result = "";
+		echo $result;
+		for ($i = 1; $i <= $digit; $i++)
+		{
+			if ($i % 3 == 0) {
+				$result.= " Fizz";
+			}
+			if ($i % 5 == 0) {
+				$result.= " Buzz";
+			}
+			if (($i % 5 != 0) && ($i % 3 != 0)) {
+				$result.= " ".$i;
+			}
+		}
+		return $result;
+	}
+
 	// If the user entered digits, process their request
 	if (array_key_exists('Digits', $_POST)) {
 
-	    $response->say($_POST['Digits']);
-
+	    $response->say(fizzBuzz($_POST['Digits']));
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input
 	    // A user has 3 seconds to enter a number, up to 5 digits
