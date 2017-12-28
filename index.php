@@ -6,7 +6,7 @@
 
 	$response = new Twiml();
 
-	echo "BEGINNING!";
+	//echo "BEGINNING!";
 
 	function fizzBuzz($digit)
 	{
@@ -29,8 +29,9 @@
 
 	// If the user entered digits, process their request
 	if (array_key_exists('Digits', $_POST)) {
-
-	    $response->say(fizzBuzz($_POST['Digits']));
+		$fizz = fizzBuzz($_POST['Digits']);
+		//echo $fizz;
+	    $response->say($fizz);
 
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input
