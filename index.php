@@ -1,50 +1,34 @@
-<?php
+<!doctype html>
 
-	//Create a route that will handle Twilio webhook requests
-	require_once __DIR__.'/vendor/autoload.php';
-	use Twilio\Twiml;
+<html lang="en">
+<head>
+	<meta charset="utf-8">
 
-	$response = new Twiml();
+	<title>The Ultimate LendUp Challenge</title>
+	<meta name="description" content="The HTML5 Herald">
+	<meta name="Kevin" content="SitePoint">
 
-	//echo "BEGINNING!";
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	function fizzBuzz($digit)
-	{
-		$result = "";
-		echo $result;
-		for ($i = 1; $i <= $digit; $i++)
-		{
-			if ($i % 3 == 0) {
-				$result.= ", Fizz";
-			}
-			if ($i % 5 == 0) {
-				$result.= ", Buzz";
-			}
-			if (($i % 5 != 0) && ($i % 3 != 0)) {
-				$result.= ", ".$i;
-			}
-		}
-		return $result;
-	}
 
-	// If the user entered digits, process their request
-	if (array_key_exists('Digits', $_POST)) {
-		$fizz = fizzBuzz($_POST['Digits']);
-		//echo $fizz;
-	    $response->say($fizz);
+</head>
 
-	} else {
-	    // If no input was sent, use the <Gather> verb to collect user input
-	    // A user has 3 seconds to enter a number, up to 5 digits
-	    $gather = $response->gather(array('numDigits' => 3));
-	    // use the <Say> verb to request input from the user
-	    $gather->say('Lets play fizzbuzz. Enter a number!');
+<body>
 
-	    // If the user doesn't enter input, loop
-	    $response->redirect('/voice');
-	}
+	
 
-	// Render the response as XML in reply to the webhook request
-	header('Content-Type: text/xml');
-	echo $response;
-?>
+	<div class="container" style="padding-top: 150px">
+		<h1 class="display-1" style="text-align: center;">FizzBuzz</h1>
+		<form>
+		  <div class="form-group">
+		    <label for="exampleInputEmail1">Phone Number</label>
+		    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter number">
+		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
