@@ -24,7 +24,7 @@
             "+17143861057",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => __DIR__.'\fizzBuzz.php')
+            array("url" => "https://glacial-gorge-23890.herokuapp.com/fizzBuzz.php")
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {
