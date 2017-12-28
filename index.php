@@ -15,13 +15,13 @@
 		for ($i = 1; $i <= $digit; $i++)
 		{
 			if ($i % 3 == 0) {
-				$result.= " Fizz";
+				$result.= ", Fizz";
 			}
 			if ($i % 5 == 0) {
-				$result.= " Buzz";
+				$result.= ", Buzz";
 			}
 			if (($i % 5 != 0) && ($i % 3 != 0)) {
-				$result.= " ".$i;
+				$result.= ", ".$i;
 			}
 		}
 		return $result;
