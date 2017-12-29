@@ -9,7 +9,11 @@
 	<meta name="Kevin" content="SitePoint">
 
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
 
 
 </head>
@@ -25,8 +29,6 @@
 		  </div>
 
 		  <h4>Add an optional delay to your call:</h4>
-
-
       <div class="form-group">
         <label for="exampleSelect1">Enter hours up to 5:</label>
 		    <input type="number" class="form-control" id="hours" placeholder="Enter number" value= "0" max="2">
@@ -63,6 +65,50 @@
 	    </div>
 	  </div>
 	</div>
+
+	<div class="container" style="padding-top: 50px">
+		<div class="box">
+			<div class="box-body table-responsive table-striped" style= "overflow-x: hidden;">
+				<table id="mySearch" style="cursor:pointer;" class="table table-hover">
+		      <thead>
+		        <tr style="cursor:default;">
+		          <th style="width:10%">Call Number</th>
+		          <th style="width:20%">Phone Number</th>
+		         	<th style="width:15%">FizzBuzz Number</th>
+		          <th style="width:18%">Time of Call</th>
+		          <th>Delay</th>
+		        </tr>
+		      </thead>
+
+		      <tbody>
+		    	</tbody>
+		    </table>
+		  </div>
+		</div>
+	</div>
+
+
+
+
+	<?php
+
+		  $servername = "localhost";
+      $username = "root";
+      $password = "";
+      // Create connection
+      $conn = new mysqli($servername, $username, $password, "fizzbuzz");
+
+      // Check connection
+      if ($conn->connect_error) {
+         die("Connection failed: " . $conn->connect_error);
+      }
+
+      $sql = "select * from calls";
+      $result = $conn->query($sql);
+      $num_rows = $result->num_rows;
+
+  ?>
+
 
 
 	<script>
