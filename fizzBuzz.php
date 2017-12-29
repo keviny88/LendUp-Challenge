@@ -10,6 +10,17 @@
 	$minutes= $_GET['minutes'];
 	$seconds= $_GET['seconds'];
 
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	// Create connection to the MySQL database
+	$conn = new mysqli($servername, $username, $password, "fizzbuzz");
+
+	// Check connection
+	if ($conn->connect_error) {
+	 die("Connection failed: " . $conn->connect_error);
+	}
+
 	$response = new Twiml();
 
 	//echo "BEGINNING!";
@@ -36,7 +47,18 @@
 	// If this is a replay call, don't ask them to enter a number
 	if ($replay != 0)
 	{
-		$response->say("THIS IS A REPEAT");
+		$sql = "select * from calls where id =".$replay;
+		$result = $conn->query($sql);
+		$num_rows = $result->num_rows;
+		if ($result->num_rows > 0) {
+		// output data of each row
+		while($row = $result->fetch_assoc()) {
+		  $fizz_num= $row['fizz_num'];
+		}
+		  } else {
+		}
+
+		$response->say(fizzBuzz($fizz_num));
 
 	} elseif (array_key_exists('Digits', $_POST)) {
 		$fizz = fizzBuzz($_POST['Digits']);
