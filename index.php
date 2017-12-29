@@ -23,6 +23,25 @@
 		    <input type="number" class="form-control" id="phoneNum" aria-describedby="emailHelp" placeholder="Enter number">
 		    <small id="emailHelp" class="form-text text-muted">We'll never share your number with anyone else.</small>
 		  </div>
+
+		  <h4>Add an optional delay to your call:</h4>
+
+
+      <div class="form-group">
+        <label for="exampleSelect1">Enter hours up to 5:</label>
+		    <input type="number" class="form-control" id="hours" placeholder="Enter number" value= "0" max="2">
+		    <small id="emailHelp" class="form-text text-muted">I mean, do you really want to be called hours later?</small>
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect1">Enter minutes up to 60:</label>
+		    <input type="number" class="form-control" id="minutes"  placeholder="Enter number" value= "0" max="60">
+      </div>
+      <div class="form-group">
+        <label for="exampleSelect1">Enter seconds up to 60:</label>
+		    <input type="number" class="form-control" id="seconds" placeholder="Enter number" value= "0" max="60">
+      </div>
+
+
 		  <button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 	</div>
@@ -64,46 +83,21 @@
 			    if (request) {
 			        request.abort();
 			    }
-			    // Fire off the request to /form.php
+			    // Fire off the request to /outCall.php
 
 			    request = $.ajax({
 			        url: "outCall.php",
 			        type: "post",
 			        data: {
 			          phoneNum: document.getElementById("phoneNum").value,
+			          hours: document.getElementById("hours").value,
+			          minutes: document.getElementById("minutes").value,
+			          seconds: document.getElementById("seconds").value,
 			        }
 			    });
-			    
+
+			    $('#myModal').modal('toggle');
 			    // Callback handler that will be called on success
-			    request.done(function (response, textStatus, jqXHR){
-			        // Log a message to the console
-			        console.log("Hooray, it worked!");
-			        //$("#success-body").append("<p>The following part number has been added to the database: </p> <p> <b style='font-size:30px'>" + response + "</b> </p>");
-
-			        //alert(response);
-			        if ($.trim(response) == "FAILURE")
-			        {
-			          $('#failure').empty();
-			          $('#failure').append("Input is invalid. Please try again.");
-			          $('#confirm').button('reset');
-
-			        }
-			        else
-			        {
-			          $('#myModal').modal('toggle');
-			          // $("#success-body").append("<p>The following part number has been added to the database: </p> <p> <b style='font-size:30px'>" + response + "</b> </p>");
-			          
-			        }
-			    });
-
-			    // Callback handler that will be called on failure
-			    request.fail(function (jqXHR, textStatus, errorThrown){
-			        // Log the error to the console
-			        console.error(
-			            "The following error occurred: "+
-			            textStatus, errorThrown
-			        );
-			    });
 			});
 		});
 	</script>
