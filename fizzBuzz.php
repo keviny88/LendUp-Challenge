@@ -4,7 +4,7 @@
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
 
-	$replay= $_GET['replay'];
+	$replay= $_GET['phoneNum'];
 
 	$response = new Twiml();
 
