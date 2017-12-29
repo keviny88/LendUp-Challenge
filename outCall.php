@@ -48,7 +48,7 @@
                 &phoneNum=".$phoneNum."
                 &hours=".$hours."
                 &minutes=".$minutes."
-                &seconds=".$seconds.")"
+                &seconds=".$seconds )
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {
