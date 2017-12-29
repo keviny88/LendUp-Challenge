@@ -1,3 +1,4 @@
+<?php include('config.php'); ?>
 <!doctype html>
 
 <html lang="en">
@@ -98,10 +99,6 @@
 		      <!-- Retrieving the data for the call to be displayed in the tables -->
 					<?php
 
-
-					  $servername = "localhost";
-					  $username = "root";
-					  $password = "";
 					  // Create connection
 					  $conn = new mysqli($servername, $username, $password, "fizzbuzz");
 

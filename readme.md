@@ -20,20 +20,12 @@ I opted to do my project in PHP, based off the LAMP stack. I apologize for the c
 
 6. I utilized a MySQL database. Import the "fizz_schema.sql" file found in the sql folder and import it into the MySQL database to generate the needed tables.
 
-7. In index.php, these 3 lines need to be changed, at 103, 104, and 105 depending on what your database URL, username, and password are:
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-
-8. The same needs to be done in lines 13, 14, 15 in "fizzBuzz.php".
-
-9. In "outCall.php", the following need to be changed to match with your API config and application:
-	25. $AccountSid = "AC7e77f203153635d9019244191774351a";
-	26. $AuthToken = "d39dd623888a1dc52f480f252445dd76";
-	41. "+17143861057", <----change to whatever your Twilio phone number is
-	43. array("url" => "http://dc3f7a66.ngrok.io/LendUp-App/fizzBuzz.php?replay=".$replay. <---change to your internet accessible URL
+7. In config.php, change all of the required variables. This includes the URL and login information for the database, as well as the API info from Twilio. 
 
 10. And that should be it. My application should have all 4 phases finished. Entries are only made into the table when a call is made and a game of FizzBuzz is sucessfully played. You can refresh to view it when it has been updated. If you want to clear the table, you can just run my mysql file again into the database. 
 
+You can see a version I uploaded on heroku at https://glacial-gorge-23890.herokuapp.com/.
+
 Once again, I apolgize for the complicated set up. If there are any problems, please do not hesitate to email me at "yinkevin8@gmail.com", or even give me a call whenever at 
 "(909) 839-3837". Hope you and the team at LendUp have/had a Happy New Year!
+ 
