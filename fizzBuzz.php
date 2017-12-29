@@ -4,7 +4,7 @@
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
 
-	$replay= $_POST['replay'];
+	$replay= $_GET['replay'];
 
 	$response = new Twiml();
 
@@ -45,6 +45,8 @@
 	    // If the user doesn't enter input, loop
 	    $response->redirect('/voice');
 	}
+
+
 
 	// Render the response as XML in reply to the webhook request
 	header('Content-Type: text/xml');
