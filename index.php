@@ -92,20 +92,20 @@
 
 	<?php
 
-		  $servername = "localhost";
-      $username = "root";
-      $password = "";
-      // Create connection
-      $conn = new mysqli($servername, $username, $password, "fizzbuzz");
+		  // $servername = "localhost";
+    //   $username = "root";
+    //   $password = "";
+    //   // Create connection
+    //   $conn = new mysqli($servername, $username, $password, "fizzbuzz");
 
-      // Check connection
-      if ($conn->connect_error) {
-         die("Connection failed: " . $conn->connect_error);
-      }
+    //   // Check connection
+    //   if ($conn->connect_error) {
+    //      die("Connection failed: " . $conn->connect_error);
+    //   }
 
-      $sql = "select * from calls";
-      $result = $conn->query($sql);
-      $num_rows = $result->num_rows;
+    //   $sql = "select * from calls";
+    //   $result = $conn->query($sql);
+    //   $num_rows = $result->num_rows;
 
   ?>
 
