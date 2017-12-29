@@ -8,31 +8,43 @@
 	<meta name="description" content="The HTML5 Herald">
 	<meta name="Kevin" content="SitePoint">
 
+<!-- 	Contains bootstrap and javascript for the data table and phone number form -->
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
-
+	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 
+<style>
+	#main {
+		padding-top: 150px
+	}
 
+	.display-1{
+		text-align: center
+	}
+	.container {
+		padding-top: 50px
+	}
+</style>
 
 </head>
 
 <body>
-	<div class="container" style="padding-top: 150px">
-		<h1 class="display-1" style="text-align: center;">FizzBuzz</h1>
+	<div id="main" class="container">
+		<h1 class="display-1">FizzBuzz Machine</h1>
 		<form id="phone-call" role="form">
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">Phone Number</label>
-		    <input type="number" class="form-control" id="phoneNum" aria-describedby="emailHelp" placeholder="Enter number">
-		    <small id="emailHelp" class="form-text text-muted">We'll never share your number with anyone else.</small>
+		    <input type="number" class="form-control" id="phoneNum" placeholder="Enter number" min="1000000000" max="9999999999">
+		    <small id="emailHelp" class="form-text text-muted">Please enter a valid 10 digit number, NOT including the +1</small>
 		  </div>
 
 		  <h4>Add an optional delay to your call:</h4>
       <div class="form-group">
         <label for="exampleSelect1">Enter hours up to 5:</label>
 		    <input type="number" class="form-control" id="hours" placeholder="Enter number" value= "0" max="2">
-		    <small id="emailHelp" class="form-text text-muted">I mean, do you really want to be called hours later?</small>
       </div>
       <div class="form-group">
         <label for="exampleSelect1">Enter minutes up to 60:</label>
@@ -57,7 +69,7 @@
 	        <h4 class="modal-title" id="myModalLabel">Success</h4>
 	      </div>
 	      <div id="success-body" class="modal-body">
-	      	Your number has sucessfully been dailed!
+	      	Your call has been sucessfully scheduled. Enjoy playing!
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -66,7 +78,7 @@
 	  </div>
 	</div>
 
-	<div class="container" style="padding-top: 50px">
+	<div class="container">
 		<div class="box">
 			<div class="box-body table-responsive table-striped" style= "overflow-x: hidden;">
 				<table id="myCalls" class="table table-hover">
@@ -82,7 +94,10 @@
 		      </thead>
 
 		      <tbody>
+
+		      <!-- Retrieving the data for the call to be displayed in the tables -->
 					<?php
+
 
 					  $servername = "localhost";
 					  $username = "root";
@@ -176,6 +191,7 @@
 			    // Callback handler that will be called on success
 			});
 
+		//Jquery handling the replay for the list of previous calls
 	    $('#myCalls').on("click", ".replay", function(e){
 	      //alert($(this).attr('id'));
 

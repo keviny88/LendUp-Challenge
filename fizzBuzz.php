@@ -3,7 +3,7 @@
 	//Create a route that will handle Twilio webhook requests
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
-
+	date_default_timezone_set('America/Los_Angeles');
 	$replay= $_GET['replay'];
 	$phoneNum= $_GET['phoneNum'];
 	$hours= $_GET['hours'];
@@ -53,28 +53,33 @@
 		if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-		  $fizz_num= $row['fizz_num'];
+		  $fizz= $row['fizz_num'];
 		}
 		  } else {
 		}
-
-		$response->say(fizzBuzz($fizz_num));
+		$response->say(fizzBuzz($fizz));
+		$datetime = date('Y-m-d H:i:s');
+		
+		$sql = "insert into calls (phone, call_date, fizz_num, hours, minutes, seconds) values ('".$phoneNum."', '".$datetime."','".$fizz."','".$hours."','".$minutes."','".$seconds."');";
+		$result = $conn->query($sql);
 
 	} elseif (array_key_exists('Digits', $_POST)) {
-		$fizz = fizzBuzz($_POST['Digits']);
 		//echo $fizz;
-	    $response->say($fizz);
+	    $response->say(fizzBuzz($_POST['Digits']));
+		$datetime = date('Y-m-d H:i:s');
+		
+		$sql = "insert into calls (phone, call_date, fizz_num, hours, minutes, seconds) values ('".$phoneNum."', '".$datetime."','".$_POST['Digits']."','".$hours."','".$minutes."','".$seconds."');";
+		$result = $conn->query($sql);
 
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input
 	    // A user has 3 seconds to enter a number, up to 5 digits
 	    $gather = $response->gather(array('numDigits' => 3));
 	    // use the <Say> verb to request input from the user
-	    $gather->say('Lets play fizzbuzz. Enter a number!');
-
-	    // If the user doesn't enter input, loop
-	    $response->redirect('/voice');
+	    $gather->say('Lets play fizzbuzz. Enter a number, up to 2 digits!');
 	}
+
+
 
 	$conn -> close();
 
