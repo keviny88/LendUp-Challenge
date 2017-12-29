@@ -1,6 +1,6 @@
 <?php
 	
-	sleep(35);
+	sleep(60);
 	flush();
 
 	//Create a route that will handle Twilio webhook requests
