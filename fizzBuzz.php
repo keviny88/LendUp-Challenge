@@ -44,10 +44,10 @@
 		return $result;
 	}
 
-	// If this is a replay call, don't ask them to enter a number
+	// If this is a replay call, don't ask them to enter a number. Instead, just play out the fizzBuzz result of the replay
 	if ($replay != 0)
 	{
-		$sql = "select * from calls where id =".$replay;
+		$sql = "select * from calls where id='".$replay."'";
 		$result = $conn->query($sql);
 		$num_rows = $result->num_rows;
 		if ($result->num_rows > 0) {
@@ -75,6 +75,8 @@
 	    // If the user doesn't enter input, loop
 	    $response->redirect('/voice');
 	}
+
+	$conn -> close();
 
 
 
