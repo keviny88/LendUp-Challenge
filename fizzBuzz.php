@@ -4,7 +4,11 @@
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
 
-	$replay= $_GET['phoneNum'];
+	$replay= $_GET['replay'];
+	$phoneNum= $_GET['phoneNum'];
+	$hours= $_GET['hours'];
+	$minutes= $_GET['minutes'];
+	$seconds= $_GET['seconds'];
 
 	$response = new Twiml();
 
@@ -30,10 +34,15 @@
 	}
 
 	// If the user entered digits, process their request
-	if (array_key_exists('Digits', $_POST)) {
+
+	if ($replay != 0)
+	{
+
+
+	} elseif (array_key_exists('Digits', $_POST)) {
 		$fizz = fizzBuzz($_POST['Digits']);
 		//echo $fizz;
-	    $response->say($replay);
+	    $response->say($fizz);
 
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input

@@ -46,7 +46,7 @@
 
             // Step 6: Set the URL Twilio will request when the call is answered.
             array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php?replay=".$replay.
-                "&phoneNum=".$phoneNum )
+                "&phoneNum=".$phoneNum."&hours=".$hours."&minutes=".$minutes."&seconds=".$seconds) 
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {

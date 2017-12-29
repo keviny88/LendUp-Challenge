@@ -191,9 +191,11 @@
 		        type: "post",
 		        data: {
 		        	replay: id,
-		        	phone: phone
+		        	phoneNum: phone
 		        }
 		    });
+
+		    $('#myModal').modal('toggle');
 
 
 	      // Abort any pending request
