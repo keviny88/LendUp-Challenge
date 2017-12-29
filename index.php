@@ -75,39 +75,68 @@
 		          <th style="width:10%">Call Number</th>
 		          <th style="width:20%">Phone Number</th>
 		         	<th style="width:15%">FizzBuzz Number</th>
-		          <th style="width:18%">Time of Call</th>
-		          <th>Delay</th>
+		          <th style="width:15%">Time of Call</th>
+		          <th style="width:25%">Delay</th>
+		          <th></th>
 		        </tr>
 		      </thead>
 
 		      <tbody>
-		    	</tbody>
+					<?php
+
+					  $servername = "localhost";
+					  $username = "root";
+					  $password = "";
+					  // Create connection
+					  $conn = new mysqli($servername, $username, $password, "fizzbuzz");
+
+					  // Check connection
+					  if ($conn->connect_error) {
+					     die("Connection failed: " . $conn->connect_error);
+					  }
+
+					  $sql = "select * from calls";
+					  $result = $conn->query($sql);
+					  $num_rows = $result->num_rows;
+
+						if ($result->num_rows > 0) {
+						// output data of each row
+						while($row = $result->fetch_assoc()) {
+						  $id= $row['id'];
+						  $phone= $row['phone'];
+						  $fizz_num= $row['fizz_num'];
+						  $call_date= $row['call_date'];
+						  $hours= $row['hours'];
+						  $minutes= $row['minutes'];
+						  $seconds= $row['seconds'];
+
+						echo "<tr class='class_row' id=".$id.">
+						  <td style='font-size: 15px'>".$id."</td>
+						  <td>".$phone."</td>
+						  <td>".$fizz_num."</td>
+						  <td>".$call_date."</td>
+						  <td>".$hours." hours, ".$minutes." minutes, ".$seconds." seconds</td>
+						  <td> 
+						    <form target='_blank'>
+						      <button type='submit' style='height: 40px; width: 120px; font-size: 14px' type='button' class='btn btn-default' disabled> JIRA &nbsp&nbsp
+						        <span class='fa fa-ticket'></span>
+						    </button>
+						    </form>
+						  </td>
+
+						  </tr>";
+						}
+						  } else {
+						  } 
+
+						$conn -> close();
+
+				  ?>
+			    </tbody>
 		    </table>
 		  </div>
 		</div>
 	</div>
-
-
-
-
-	<?php
-
-		  // $servername = "localhost";
-    //   $username = "root";
-    //   $password = "";
-    //   // Create connection
-    //   $conn = new mysqli($servername, $username, $password, "fizzbuzz");
-
-    //   // Check connection
-    //   if ($conn->connect_error) {
-    //      die("Connection failed: " . $conn->connect_error);
-    //   }
-
-    //   $sql = "select * from calls";
-    //   $result = $conn->query($sql);
-    //   $num_rows = $result->num_rows;
-
-  ?>
 
 
 
