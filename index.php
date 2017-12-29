@@ -164,7 +164,7 @@
 			        url: "outCall.php",
 			        type: "post",
 			        data: {
-			          replay: '0',
+			          replay: '123',
 			          phoneNum: document.getElementById("phoneNum").value,
 			          hours: document.getElementById("hours").value,
 			          minutes: document.getElementById("minutes").value,
