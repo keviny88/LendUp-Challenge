@@ -33,11 +33,10 @@
 		return $result;
 	}
 
-	// If the user entered digits, process their request
-
+	// If this is a replay call, don't ask them to enter a number
 	if ($replay != 0)
 	{
-
+		$response->say("THIS IS A REPEAT");
 
 	} elseif (array_key_exists('Digits', $_POST)) {
 		$fizz = fizzBuzz($_POST['Digits']);
