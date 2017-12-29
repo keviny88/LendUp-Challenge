@@ -20,8 +20,7 @@
     $client = new Client($AccountSid, $AuthToken);
 
     try {
-        // Initiate a new outbound call
-        echo "hello";
+        // Initiate a new outbound call;
         $call = $client->account->calls->create(
             // Step 4: Change the 'To' number below to whatever number you'd like 
             // to call.
