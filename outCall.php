@@ -7,7 +7,7 @@
     $replay = $_POST["replay"];
 	$phoneNum = $_POST["phoneNum"];
 
-    
+
     // If this phone call is not a replay, 
     if ($replay == 0) {
         $hours = $_POST["hours"];
@@ -45,7 +45,11 @@
             "+17143861057",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php?replay=".$replay )
+            array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php?replay=".$replay."
+                &phoneNum=".$phoneNum."
+                &hours=".$hours."
+                &minutes=".$minutes."
+                &seconds=".$seconds )
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {
