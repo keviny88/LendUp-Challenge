@@ -4,6 +4,9 @@
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Rest\Client;
 
+	//Retrieving the number that we will call
+	$phoneNum = $_POST["phoneNum"];
+
 
     // Step 2: Set our AccountSid and AuthToken from https://twilio.com/console
     $AccountSid = "AC7e77f203153635d9019244191774351a";
@@ -17,7 +20,7 @@
         $call = $client->account->calls->create(
             // Step 4: Change the 'To' number below to whatever number you'd like 
             // to call.
-            "+16263481807",
+            "+".$phoneNum,
 
             // Step 5: Change the 'From' number below to be a valid Twilio number 
             // that you've purchased or verified with Twilio.
