@@ -15,12 +15,13 @@
         $hours = $_POST["hours"];
         $minutes = $_POST["minutes"];
         $seconds = $_POST["seconds"];
-
-        $delay = $seconds + ($minutes * 60) + ($hours * 3600);
     }
     else {
-        $delay = 0;
+        $hours = 0;
+        $minutes = 0;
+        $seconds = 0;
     }
+    $delay = $seconds + ($minutes * 60) + ($hours * 3600);
 
     
     // Step 2: Set our AccountSid and AuthToken from https://twilio.com/console
@@ -46,7 +47,7 @@
             "+17143861057",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php?replay=".$replay)
+            array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php?replay=123")
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {
