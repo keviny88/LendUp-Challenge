@@ -4,6 +4,8 @@
 	require_once __DIR__.'/vendor/autoload.php';
 	use Twilio\Twiml;
 
+	$replay= $_POST['replay']
+
 	$response = new Twiml();
 
 	//echo "BEGINNING!";
@@ -31,7 +33,7 @@
 	if (array_key_exists('Digits', $_POST)) {
 		$fizz = fizzBuzz($_POST['Digits']);
 		//echo $fizz;
-	    $response->say($fizz);
+	    $response->say($replay);
 
 	} else {
 	    // If no input was sent, use the <Gather> verb to collect user input

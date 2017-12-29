@@ -6,14 +6,23 @@
 	use Twilio\Rest\Client;
 
 	//Retrieving the number that we will call
+
+    $replay = $_POST["replay"];
 	$phoneNum = $_POST["phoneNum"];
-    $hours = $_POST["hours"];
-    $minutes = $_POST["minutes"];
-    $seconds = $_POST["seconds"];
 
-    // $delay = $seconds + ($minutes * 60) + ($hours * 3600);
+    // If this phone call is not a replay, 
+    if ($replay == 0) {
+        $hours = $_POST["hours"];
+        $minutes = $_POST["minutes"];
+        $seconds = $_POST["seconds"];
 
+        $delay = $seconds + ($minutes * 60) + ($hours * 3600);
+    }
+    else {
+        $delay = 0;
+    }
 
+    
     // Step 2: Set our AccountSid and AuthToken from https://twilio.com/console
     $AccountSid = "AC7e77f203153635d9019244191774351a";
     $AuthToken = "d39dd623888a1dc52f480f252445dd76";
@@ -37,7 +46,7 @@
             "+17143861057",
 
             // Step 6: Set the URL Twilio will request when the call is answered.
-            array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php")
+            array("url" => "https://glacial-gorge-23890.herokuapp.com//fizzBuzz.php?replay=".$replay)
         );
         echo "Started call: " . $call->sid;
     } catch (Exception $e) {

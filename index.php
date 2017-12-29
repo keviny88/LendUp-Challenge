@@ -69,7 +69,7 @@
 	<div class="container" style="padding-top: 50px">
 		<div class="box">
 			<div class="box-body table-responsive table-striped" style= "overflow-x: hidden;">
-				<table id="mySearch" style="cursor:pointer;" class="table table-hover">
+				<table id="myCalls" class="table table-hover">
 		      <thead>
 		        <tr style="cursor:default;">
 		          <th style="width:10%">Call Number</th>
@@ -117,11 +117,8 @@
 						  <td>".$call_date."</td>
 						  <td>".$hours." hours, ".$minutes." minutes, ".$seconds." seconds</td>
 						  <td> 
-						    <form target='_blank'>
-						      <button type='submit' style='height: 40px; width: 120px; font-size: 14px' type='button' class='btn btn-default' disabled> JIRA &nbsp&nbsp
-						        <span class='fa fa-ticket'></span>
-						    </button>
-						    </form>
+	              <button id=".$id." phone='".$phone."' type='submit' style='width: 120px; font-size: 12px' type='button' class='btn btn-default replay'> Replay
+	              </button>
 						  </td>
 
 						  </tr>";
@@ -146,7 +143,10 @@
 		// and make the call.
 		jQuery(document).ready(function($){
 
+			$('#myCalls').DataTable();
+
 			var request;
+			//Function called when first submitting a call
 			$("#phone-call").submit(function(event){
 
 
@@ -164,6 +164,7 @@
 			        url: "outCall.php",
 			        type: "post",
 			        data: {
+			        	replay: 0,
 			          phoneNum: document.getElementById("phoneNum").value,
 			          hours: document.getElementById("hours").value,
 			          minutes: document.getElementById("minutes").value,
@@ -174,6 +175,31 @@
 			    $('#myModal').modal('toggle');
 			    // Callback handler that will be called on success
 			});
+
+	    $('#myCalls').on("click", ".replay", function(e){
+	      //alert($(this).attr('id'));
+
+	      event.preventDefault();
+	      if (request) {
+	          request.abort();
+	      }
+	      var id= $(this).attr('id');
+	      var phone= $(this).attr('phone');
+
+		    request = $.ajax({
+		        url: "outCall.php",
+		        type: "post",
+		        data: {
+		        	replay: id,
+		        	phone: phone
+		        }
+		    });
+
+
+	      // Abort any pending request
+	    });
+
+
 		});
 	</script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
